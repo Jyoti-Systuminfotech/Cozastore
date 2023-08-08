@@ -1,0 +1,15 @@
+.navbar-nav.icons {
+    margin-left: auto;
+}
+.btn{
+    color:black;
+    background-color:#E0E0E0;
+    outline:none;
+    height:50px;
+    width:190px;
+    border-radius: 25px;
+}
+.btn:hover{
+    color:white;
+    background-color:black;
+}
