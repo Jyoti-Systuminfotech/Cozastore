@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="icon" type="image/png" href="images/icons/favicon.png" />
@@ -24,7 +25,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -246,23 +248,23 @@
                         All Products
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 filter-button" data-filter=".women">
                         Women
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 filter-button" data-filter=".men">
                         Men
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 filter-button" data-filter=".bag">
                         Bag
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 filter-button" data-filter=".shoes">
                         Shoes
                     </button>
 
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 filter-button" data-filter=".watches">
                         Watches
                     </button>
                 </div>
@@ -330,12 +332,110 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="js/main.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
+
+    <!-- <script>
+        var displayedImages = [];
+        var currentCategory = '*';
+
+        function toggleLoadingButton(isLoading) {
+            var $button = $('#nxtPage');
+            $button.prop('disabled', isLoading);
+            if (isLoading) {
+                $button.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+            } else {
+                $button.html('LOAD MORE');
+            }
+        }
+        function simulateLoading(pageNo) {
+            toggleLoadingButton(true);
+            setTimeout(function () {
+                toggleLoadingButton(false);
+                loadData(pageNo);
+            }, 3000);
+        }
+        function loadData(pageNo, selectedCategory) {
+            $.ajax({
+                type: "GET",
+                url: "https://sandbox.pranavdev.space/gadgets/api/products/",
+                data: { page: pageNo },
+                success: function (response) {
+                    if (response.status == "success") {
+                        var data = response.data;
+                        var tabData = '';
+
+                        for (var i = 0; i < data.length; i++) {
+                            if (!displayedImages.includes(data[i].image)) {
+                                if (selectedCategory === '*' || isCategoryMatch(data[i], selectedCategory)) {
+                                    displayedImages.push(data[i].image);
+                                    var imageDiv = '<div class="col-md-3 mb-3">';
+                                    if (data[i].image != '') {
+                                        imageDiv += '<a data-fancybox="gallery" href="' + data[i].image + '">';
+                                        imageDiv += '<img src="' + data[i].image + '" class="img-fluid" alt="Image">';
+                                        imageDiv += '</a>';
+                                    } else {
+                                        imageDiv += '<p>No Image Found</p>';
+                                    }
+                                    imageDiv += '<p style="color:grey;">' + data[i].description + '</p>';
+                                    imageDiv += '</div>';
+                                    tabData += imageDiv;
+                                }
+                            }
+                        }
+
+                        $('#imageContainer').append(tabData);
+
+                        var pagination = response.pagination;
+                        if (pagination.total_pages === pageNo) {
+                            $('#nxtPage').hide();
+                        }
+                        $('#nxtPage').attr('currPage', pagination.next_page);
+
+                        $('[data-fancybox="gallery"]').fancybox({
+                            thumbs: {
+                                autoStart: true,
+                                axis: 'x'
+                            }
+                        });
+                    } else {
+                        $('#imageContainer').html(response.message);
+                    }
+                    function isCategoryMatch(product, selectedCategory) {
+                        return (
+                            product.category === selectedCategory ||
+                            selectedCategory === 'Women'
+                        );
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadData(1);
+            $(document).on('click', '.filter-button', function () {
+                var selectedCategory = $(this).data('filter');
+                displayedImages = [];
+                $('#imageContainer').empty();
+                loadData(1, selectedCategory);
+            });
+
+
+            $(document).on('click', '#nxtPage', function () {
+                var pageNo = $(this).attr('currPage');
+                pageNo = parseInt(pageNo) + 1;
+                simulateLoading(pageNo);
+            });
+        });
+    </script> -->
 
     <script>
         var displayedImages = [];
+        var currentCategory = '*';
 
         function toggleLoadingButton(isLoading) {
             var $button = $('#nxtPage');
@@ -357,33 +457,35 @@
             $.ajax({
                 type: "GET",
                 url: "https://sandbox.pranavdev.space/gadgets/api/products/",
-                data: { page: pageNo },
+                data: { page: pageNo, category: currentCategory },
                 success: function (response) {
                     if (response.status == "success") {
                         var data = response.data;
                         var tabData = '';
 
-                        for (var i = 0; i < data.length; i++) {
+                         for (var i = 0; i < data.length; i++) {
                             if (!displayedImages.includes(data[i].image)) {
-                                displayedImages.push(data[i].image);
-                                var imageDiv = '<div class="col-md-3 mb-3">';
-                                if (data[i].image != '') {
-                                    imageDiv += '<a data-fancybox="gallery" href="' + data[i].image + '">';
-                                    imageDiv += '<img src="' + data[i].image + '" class="img-fluid" alt="Image">';
-                                    imageDiv += '</a>';
-                                } else {
-                                    imageDiv += '<p>No Image Found</p>';
+                                if (currentCategory === '*' || data[i].category === currentCategory) {
+                                    displayedImages.push(data[i].image);
+                                    var imageDiv = '<div class="col-md-3 mb-3">';
+                                    if (data[i].image != '') {
+                                        imageDiv += '<a data-fancybox="gallery" href="' + data[i].image + '">';
+                                        imageDiv += '<img src="' + data[i].image + '" class="img-fluid" alt="Image">';
+                                        imageDiv += '</a>';
+                                    } else {
+                                        imageDiv += '<p>No Image Found</p>';
+                                    }
+                                    imageDiv += '<p style="color:grey;">' + data[i].description + '</p>';
+                                    imageDiv += '</div>';
+                                    tabData += imageDiv;
                                 }
-                                imageDiv += '<p style="color:grey;">' + data[i].description + '</p>';
-                                imageDiv += '</div>';
-                                tabData += imageDiv;
                             }
                         }
 
                         $('#imageContainer').append(tabData);
 
                         var pagination = response.pagination;
-                        if (pagination.total_pages == pageNo) {
+                        if (pagination.total_pages === pageNo) {
                             $('#nxtPage').hide();
                         }
                         $('#nxtPage').attr('currPage', pagination.next_page);
@@ -403,6 +505,12 @@
 
         $(document).ready(function () {
             loadData(1);
+            $(document).on('click', '.filter-button', function () {
+                currentCategory = $(this).data('filter');
+                displayedImages = [];
+                $('#imageContainer').empty();
+                loadData(1);
+            });
 
             $(document).on('click', '#nxtPage', function () {
                 var pageNo = $(this).attr('currPage');
